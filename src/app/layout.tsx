@@ -24,7 +24,8 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         className={`${geistSans.className} antialiased
-        h-screen w-full bg-black bg-grid-small-white/[0.15] relative flex items-center justify-center`}
+        h-screen w-full bg-black bg-grid-small-white/[0.20] relative flex items-center justify-center
+        `}
       >
         <Header />
         {children}

@@ -1,7 +1,5 @@
+import GameInfo from "@/app/components/GameInfo"
+
 export default function Page() {
-    return (
-        <div className="text-white">
-            game page!
-        </div>
-    )
+    return <GameInfo />
 }

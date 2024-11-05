@@ -1,7 +1,9 @@
-export default function Home() {
-  return (
-    <div className="text-white">
-      Page home!
-    </div>
-  );
+import { GameProps } from "@/utils/game";
+import HomePage from "./components/HomePage";
+
+import { getDailyGame } from "@/services/api";
+
+export default async function Home() {
+  const dailyGame: GameProps = await getDailyGame();
+  return <HomePage dailyGame={dailyGame} />
 }
