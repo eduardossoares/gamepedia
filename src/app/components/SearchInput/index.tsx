@@ -7,8 +7,8 @@ import { FormEvent, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-export default function SearchInput() {
-    const [inputValue, setInputValue] = useState<string>();
+export default function SearchInput({ isAnimated = true }: { isAnimated?: boolean }) {
+    const [inputValue, setInputValue] = useState("");
     const router = useRouter();
 
     const handleSearch = (e: FormEvent) => {
@@ -16,6 +16,22 @@ export default function SearchInput() {
         if (!inputValue) return;
         router.push(`/game/search/${inputValue}`)
     }
+
+    if (!isAnimated) return (
+        <form onSubmit={handleSearch}
+            className="bg-white flex items-center w-full
+        mx-auto rounded-md p-1 justify-between gap-x-2">
+            <input className="px-2 outline-none text-black w-full max-sm:text-sm" onChange={(e) =>
+                setInputValue(e.target.value)
+            } value={inputValue}
+                type="text" placeholder="Procurando algum jogo em específico?" />
+            <Button>
+                Buscar
+                <FaArrowRight size={22}
+                    className="right-4 text-2xl absolute hidden sm:block" />
+            </Button>
+        </form>
+    )
 
     return (
         <motion.form onSubmit={handleSearch}

@@ -1,7 +1,8 @@
+import { GameProps } from "@/utils/game"
 import Card from "../Card"
 import { motion } from "framer-motion"
 
-export default function CardGrid() {
+export default function CardGrid({ gameData = [] }: { gameData: GameProps[] }) {
     return (
         <motion.div
             variants={{
@@ -15,10 +16,9 @@ export default function CardGrid() {
                 delay: 1,
             }}
             className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-8">
-            <Card delay={1.75} img="https://i.ytimg.com/vi/GcGJ4fe0iNk/maxresdefault.jpg" title="EA-Sports FC25" />
-            <Card delay={1.75} img="https://i.ytimg.com/vi/GcGJ4fe0iNk/maxresdefault.jpg" title="EA-Sports FC25" />
-            <Card delay={1.75} img="https://i.ytimg.com/vi/GcGJ4fe0iNk/maxresdefault.jpg" title="EA-Sports FC25" />
-            <Card delay={1.75} img="https://i.ytimg.com/vi/GcGJ4fe0iNk/maxresdefault.jpg" title="EA-Sports FC25" />
+            {gameData.map((item) => (
+                <Card key={item.id} img={item.image_url} title={item.title} linkRef={item.id} />
+            ))}
         </motion.div>
     )
 }

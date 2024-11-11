@@ -1,9 +1,9 @@
-import { GameProps } from "@/utils/game";
 import HomePage from "./components/HomePage";
 
-import { getDailyGame } from "@/services/api";
+import { GameProps } from "@/utils/game";
+import { getGamesData } from "@/services/service";
 
 export default async function Home() {
-  const dailyGame: GameProps = await getDailyGame();
-  return <HomePage dailyGame={dailyGame} />
+  const gamesData: GameProps[] = await getGamesData();
+  return <HomePage gameData={gamesData} />
 }
